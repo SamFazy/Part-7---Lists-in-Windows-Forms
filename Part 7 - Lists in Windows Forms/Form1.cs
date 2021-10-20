@@ -70,6 +70,7 @@ namespace Part_7___Lists_in_Windows_Forms
             heros.Add("superman");
             heros.Add("batman");
 
+            IstHeroes.DataSource = null;
             IstHeroes.DataSource = heros;
 
             lblStatus.Text = ("Status: New Hero List");
@@ -106,10 +107,24 @@ namespace Part_7___Lists_in_Windows_Forms
         private void btnRemoveHero_Click(object sender, EventArgs e)
         {
 
-            heros.Remove((string)(txtRemoveHero.Text));
+            heros.Remove(txtRemoveHero.Text.ToLower());
 
             IstHeroes.DataSource = null;
-            
+            IstHeroes.DataSource = heros;
+
+            lblStatus.Text = ("Status: Hero Removed");
+
+
+        }
+
+        private void btnAddHero_Click(object sender, EventArgs e)
+        {
+            heros.Add(txtAddHero.Text.ToLower());
+
+            IstHeroes.DataSource = null;
+            IstHeroes.DataSource = heros;
+
+            lblStatus.Text = ("Status: Hero Added");
         }
     }
 }
